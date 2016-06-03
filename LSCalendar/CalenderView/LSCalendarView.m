@@ -233,7 +233,17 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row % 7 > 1) {
+    //计算屏幕宽度除以7.(去掉小数点后的数据为多少).
+    int minWidth = floorf(SCREEN_WIDTH/7);
+    //7个最小宽度是多宽
+    int minAllWidth = minWidth * 7;
+    //计算跟屏幕宽度的差距.(得到1行下需要变宽的item个数)
+    int widthRst = SCREEN_WIDTH - minAllWidth;
+    
+    
+    
+    
+    if (indexPath.row % 7 > 7 - widthRst - 1) {
         
         return CGSizeMake(ceil(SCREEN_WIDTH/7), ceil(SCREEN_WIDTH/7));
         
